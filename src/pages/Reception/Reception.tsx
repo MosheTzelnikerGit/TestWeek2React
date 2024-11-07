@@ -19,7 +19,7 @@ const Reception: React.FC = () => {
   };
 
   const handleSetRole = (index: number) => {
-    dispatch(setRole(index));
+    dispatch(setRole(optionalroles[index]));
   };
 
   return (

@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface FloorAccessState {
-  floors: boolean[]; 
+  floorAccess: boolean[]; // מערך הגישה לקומות
 }
 
 const initialState: FloorAccessState = {
-  floors: [false, false, false, false, false], 
+  floorAccess: [false, false, false, false, false], 
 };
 
 const floorSlice = createSlice({
@@ -14,8 +14,8 @@ const floorSlice = createSlice({
   reducers: {
     changeAccess: (state, action: PayloadAction<number>) => {
       const floorIndex = action.payload;
-      if (floorIndex >= 0 && floorIndex < state.floors.length) {
-        state.floors[floorIndex] = !state.floors[floorIndex];
+      if (floorIndex >= 0 && floorIndex < state.floorAccess.length) {
+        state.floorAccess[floorIndex] = !state.floorAccess[floorIndex];
       }
     },
   },
