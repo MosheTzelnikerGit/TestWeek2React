@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface FloorAccessState {
-  floorAccess: boolean[]; // מערך הגישה לקומות
+  floorAccess: boolean[]; 
 }
 
 const initialState: FloorAccessState = {

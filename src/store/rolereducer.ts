@@ -1,24 +1,22 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import roels from '../data/roles.json';
-
-
+import roles from "../data/roles.json";
 interface RoleState {
-  role: string; 
+  role: string;
 }
 
 const initialState: RoleState = {
-  role: roels[0], 
+  role: roles[0],
 };
 
 const roleSlice = createSlice({
   name: 'role',
   initialState,
   reducers: {
-    setRole: (state, action: PayloadAction<string>) => {
-      const newRole = action.payload;
-      if (roels.includes(newRole)) {
-        state.role = newRole;
-      }
+    setRole: (state, action: PayloadAction<number>) => {
+        const roleIndex = action.payload;
+        if (roleIndex >= 0 && roleIndex < roles.length) {
+            state.role = roles[roleIndex];
+        }    
     },
   },
 });
