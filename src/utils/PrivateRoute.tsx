@@ -1,13 +1,15 @@
-import { ReactNode, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Navigate, useParams } from 'react-router-dom';
 
-interface IPrivateRoute{
-    component: ReactNode,
-}
+const PrivateRoute: React.FC<{ children: JSX.Element }> = ({ children }) => {
+    const floorAccess = useSelector(
+        (state: { floorAccess: { floorAccess: boolean[] } }) => state.floorAccess.floorAccess
+    );
+    const { index } = useParams<{ index: string }>();
+    const floorIndex = parseInt(index || "0");
 
-const PrivateRoute = ({ component}:IPrivateRoute) => {
-    //FILL HERE 3.6
+    return floorAccess[floorIndex] ? children : <Navigate to="/forbidden" />;
 };
 
-export default PrivateRoute
+export default PrivateRoute;
